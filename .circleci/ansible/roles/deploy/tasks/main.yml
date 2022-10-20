@@ -23,9 +23,9 @@
 
 - name: "start the backend app-stage 2"
   become: true
-  command: pm2 start npm -- start
+  command: pm2 start main.js
   args:
-    chdir: /home/ubuntu/udapeople-appfiles/
+    chdir: /home/ubuntu/udapeople-appfiles/dist
   # environment:
   #   ENVIRONMENT: "production"
   #   TYPEORM_MIGRATIONS_DIR: "./migrations"

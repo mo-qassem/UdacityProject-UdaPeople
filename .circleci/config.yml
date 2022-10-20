@@ -352,7 +352,7 @@ jobs:
           name: Install dependencies
           command: |
             apk update
-            apk add --update nodejs npm tar gzip ansible aws-cli openssh-client
+            apk add --update nodejs npm tar gzip
       - attach_workspace:
           at: ~/project/.circleci/ansible
       - restore_cache:
