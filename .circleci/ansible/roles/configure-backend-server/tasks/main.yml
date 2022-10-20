@@ -1,14 +1,10 @@
-- name: "install nodejs"
-  become: true
-  shell: |
-    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-
-- name: "install nodejs"
-  become: true
+---
+- name: "installing nodejs, npm"
+  become: yes
   apt:
-    name: "nodejs"
-    state: latest
-    update_cache: yes
+    pkg:
+      - nodejs
+      - npm
 
 - name: "install pm2"
   become: true
