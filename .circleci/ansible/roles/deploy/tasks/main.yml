@@ -23,7 +23,7 @@
 
 - name: "start the backend app-stage 2"
   become: true
-  command: pm2 start main.js
+  command: pm2 start npm -- start
   args:
     chdir: /home/ubuntu/udapeople-appfiles/
   # environment:
