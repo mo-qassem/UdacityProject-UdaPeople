@@ -459,7 +459,7 @@ jobs:
             echo Stack names: "${STACKS[@]}"
             if [[ "${NEW_WORKFLOW_ID}" != "${OLD_WORKFLOW_ID}" ]]
             then
-              echo "----------Delete Confirmed----------"
+              echo "----------Delete Confirmed-----------"
               aws s3 rm --recursive s3://udapeople-frontend-${OLD_WORKFLOW_ID}
               aws cloudformation delete-stack --stack-name udapeople-frontend-${OLD_WORKFLOW_ID}
               aws cloudformation delete-stack --stack-name udapeople-backend-${OLD_WORKFLOW_ID}
