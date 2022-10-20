@@ -1,0 +1,35 @@
+---
+- name: "create directory udapeople-appfiles"
+  file:
+    path: /home/ubuntu/udapeople-appfiles
+    state: directory
+    mode: "600"
+
+- name: "copy nodejs app to backend-server"
+  copy:
+    src: ~/project/artifact.tar.gz
+    dest: /home/ubuntu/udapeople-artifact.tar.gz
+
+- name: "unarchive nodejs app on backend-server"
+  unarchive:
+    src: /home/ubuntu/udapeople-artifact.tar.gz
+    dest: /home/ubuntu/udapeople-appfiles/
+    remote_src: yes
+
+- name: "start the backend app"
+  become: true
+  command: pm2 start main.js
+  args:
+    chdir: /home/ubuntu/udapeople-appfiles/dist/
+  environment:
+    NODE_ENV: production
+    VERSION: 1
+    TYPEORM_CONNECTION: postgres
+    TYPEORM_MIGRATIONS_DIR: /home/ubuntu/udapeople-appfiles/dist/migrations
+    TYPEORM_ENTITIES: /home/ubuntu/udapeople-appfiles/dist/modules/domain/**/*.entity{.ts,.js}
+    TYPEORM_MIGRATIONS: /home/ubuntu/udapeople-appfiles/dist/migrations/*{.ts,.js}
+    TYPEORM_DATABASE: postgres
+    TYPEORM_PORT: 5432
+    TYPEORM_HOST: "{{ lookup('env', 'TTYPEORM_HOST') }}"
+    TYPEORM_USERNAME: "{{ lookup('env', 'TYPEORM_USERNAME') }}"
+    TYPEORM_PASSWORD: "{{ lookup('env', 'TYPEORM_PASSWORD') }}"

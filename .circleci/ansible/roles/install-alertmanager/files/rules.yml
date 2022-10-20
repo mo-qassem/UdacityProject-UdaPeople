@@ -1,0 +1,19 @@
+groups:
+  - name: Backend Server Down
+    rules:
+      - alert: InstanceDown
+        expr: up == 0
+        for: 3m
+        labels:
+          severity: "critical"
+        annotations:
+          summary: "Backend Instance is down"
+          description: " of job  has been down for more than 3 minutes."
+      - alert: HostHighCpuLoad
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 50
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: Host high CPU load (instance {{ $labels.instance }})
+          description: "CPU load is > 50%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
