@@ -368,6 +368,17 @@ jobs:
           command: |
             apk add --update nodejs npm
       - run:
+          name: Frontend smoke test.
+          command: |
+            URL="http://udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:4}.s3-website-us-east-1.amazonaws.com/#/employees"
+            echo ${URL}
+            if curl -s ${URL} | grep "Welcome"
+            then
+              return 0
+            else
+              return 1
+            fi
+      - run:
           name: Backend smoke test
           command: |
             export BACKEND_IP=$(aws ec2 describe-instances \
@@ -381,21 +392,11 @@ jobs:
             else
               return 1
             fi
-      - run:
-          name: Frontend smoke test.
-          command: |
-            URL="http://udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:4}.s3-website-us-east-1.amazonaws.com/#/employees"
-            echo ${URL}
-            if curl -s ${URL} | grep "Welcome"
-            then
-              return 0
-            else
-              return 1
-            fi
-      - destroy-infrastructure:
-          workflow-id: ${CIRCLE_WORKFLOW_ID:0:4}
-      - revert-migrations:
-          workflow-id: ${CIRCLE_WORKFLOW_ID:0:4}
+
+      # - destroy-infrastructure:
+      #     workflow-id: ${CIRCLE_WORKFLOW_ID:0:4}
+      # - revert-migrations:
+      #     workflow-id: ${CIRCLE_WORKFLOW_ID:0:4}
       - slack/notify:
           event: fail
           template: basic_fail_1
