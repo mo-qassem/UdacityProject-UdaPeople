@@ -16,6 +16,12 @@
     dest: /home/ubuntu/udapeople-appfiles/
     remote_src: yes
 
+- name: "copy nodejs app to backend-server"
+  copy:
+    src: /home/ubuntu/udapeople-appfiles/.env
+    dest: /home/ubuntu/udapeople-appfiles/dist/.env
+    remote_src: yes
+
 - name: "start the backend app-stage 1"
   become: true
   shell: npm install
@@ -23,9 +29,9 @@
 
 - name: "start the backend app-stage 2"
   become: true
-  command: pm2 start npm -- start
+  command: pm2 start main.js
   args:
-    chdir: /home/ubuntu/udapeople-appfiles/
+    chdir: /home/ubuntu/udapeople-appfiles/dist/
   # environment:
   #   ENVIRONMENT: "production"
   #   TYPEORM_MIGRATIONS_DIR: "./migrations"
