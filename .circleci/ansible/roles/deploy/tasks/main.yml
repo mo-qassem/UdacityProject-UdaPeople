@@ -30,6 +30,6 @@
     TYPEORM_MIGRATIONS: ./migrations/*{.ts,.js}
     TYPEORM_DATABASE: postgres
     TYPEORM_PORT: 5432
-    TYPEORM_HOST: "{{ lookup('env', 'TTYPEORM_HOST') }}"
+    TYPEORM_HOST: "{{ lookup('env', 'TYPEORM_HOST') }}"
     TYPEORM_USERNAME: "{{ lookup('env', 'TYPEORM_USERNAME') }}"
     TYPEORM_PASSWORD: "{{ lookup('env', 'TYPEORM_PASSWORD') }}"
