@@ -349,7 +349,7 @@ jobs:
             npm run build
             cd ..
             tar -C backend -czvf artifact.tar.gz .
-            TYPEORM_MIGRATIONS_DIR=./migrations
+            export TYPEORM_MIGRATIONS_DIR=./migrations
             export TYPEORM_ENTITIES=./modules/domain/**/*.entity.js
             export TYPEORM_MIGRATIONS=./migrations/*.js
             cd ~/project/.circleci/ansible
