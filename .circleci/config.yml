@@ -62,7 +62,7 @@ jobs:
           name: Build front-end
           command: |
             cd frontend
-            npm install
+            npm i
             npm run build
       - save_cache:
           paths: [frontend/node_modules]
@@ -84,7 +84,7 @@ jobs:
           name: Build back-end
           command: |
             cd backend
-            npm install
+            npm i
             npm run build
       - save_cache:
           paths: [backend/node_modules]
@@ -106,7 +106,7 @@ jobs:
           name: Test front-end
           command: |
             cd frontend
-            npm install
+            npm i
             npm run test
       - slack/notify:
           event: fail
@@ -125,7 +125,7 @@ jobs:
           name: Test back-end
           command: |
             cd backend
-            npm install
+            npm i
             npm run test
       - slack/notify:
           event: fail
@@ -144,7 +144,7 @@ jobs:
           name: Analyze front-end
           command: |
             cd frontend
-            npm install
+            npm i
             npm audit fix --audit-level=critical --force
       - slack/notify:
           event: fail
@@ -163,7 +163,7 @@ jobs:
           name: Analyze back-end
           command: |
             cd backend
-            npm install
+            npm i
             npm audit fix --audit-level=critica --force
       - slack/notify:
           event: fail
