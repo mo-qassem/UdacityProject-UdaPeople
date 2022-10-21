@@ -32,5 +32,5 @@
   become: true
   shell: |
     cd /home/ubuntu/udapeople-appfiles/dist
-    sudo pm2 stop default
-    sudo pm2 start npm -- start
+    pm2 stop default
+    pm2 start npm -- start --name main.js
