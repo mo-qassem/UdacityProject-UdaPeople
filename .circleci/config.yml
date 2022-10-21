@@ -84,7 +84,7 @@ jobs:
           name: prepare envs for backend build
           command: |
             cat \<<EOF > backend/.env
-            NODE_ENV=local
+            NODE_ENV=production
             TYPEORM_CONNECTION=postgres
             TYPEORM_MIGRATIONS_DIR=./migrations
             TYPEORM_ENTITIES=./modules/domain/**/*.entity{.ts,.js}
@@ -343,7 +343,7 @@ jobs:
 
   Deploy-Backend:
     docker:
-      - image: awkspace/ansible:latest
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - add_ssh_keys:
@@ -351,8 +351,11 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk update
-            apk add nodejs npm tar gzip
+            apt install -y tar gzip
+            sudo apt update
+            sudo apt install software-properties-common -y
+            sudo add-apt-repository --yes --update ppa:ansible/ansible
+            sudo apt install ansible -y
       - attach_workspace:
           at: ~/project/.circleci/ansible
       - restore_cache:
@@ -361,7 +364,7 @@ jobs:
           name: prepare environment for backend build
           command: |
             cat \<<EOF > backend/.env
-            NODE_ENV=local
+            NODE_ENV=production
             TYPEORM_CONNECTION=postgres
             TYPEORM_MIGRATIONS_DIR=./migrations
             TYPEORM_ENTITIES=./modules/domain/**/*.entity{.ts,.js}
