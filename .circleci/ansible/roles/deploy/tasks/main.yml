@@ -29,7 +29,8 @@
     cmd: npm install
 
 - name: "start the backend app-stage 2"
+  become: true
   shell: |
     cd /home/ubuntu/udapeople-appfiles/dist
-    pm2 stop default
-    pm2 start npm -- start
+    sudo pm2 stop default
+    sudo pm2 start npm -- start
