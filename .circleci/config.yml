@@ -162,7 +162,8 @@ jobs:
           command: |
             cd frontend
             npm i
-            npm audit fix --audit-level=critical --force
+            npm audit --audit-level=critical
+            npm audit fix --audit-level=critical
       - slack/notify:
           event: fail
           template: basic_fail_1
@@ -181,6 +182,7 @@ jobs:
           command: |
             cd backend
             npm i
+            npm audit --audit-level=critical
             npm audit fix --audit-level=critica --force
       - slack/notify:
           event: fail
@@ -353,7 +355,7 @@ jobs:
           name: Install dependencies
           command: |
             apk update
-            apk add --update nodejs npm tar gzip
+            apk add nodejs npm tar gzip
       - attach_workspace:
           at: ~/project/.circleci/ansible
       - restore_cache:

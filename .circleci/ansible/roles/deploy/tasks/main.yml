@@ -25,8 +25,7 @@
 - name: "start the backend app-stage 1"
   become: true
   command:
-    args:
-      chdir: /home/ubuntu/udapeople-appfiles/dist
+    chdir: /home/ubuntu/udapeople-appfiles/dist
     cmd: npm install
     cmd: pm2 stop default
     cmd: pm2 start main.js
