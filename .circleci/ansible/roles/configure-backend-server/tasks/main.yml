@@ -1,5 +1,5 @@
 ---
-- name: "installing npm"
+- name: "Install npm"
   become: yes
   apt:
     name: npm
