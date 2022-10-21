@@ -84,10 +84,11 @@ jobs:
           name: prepare envs for backend build
           command: |
             cat \<<EOF > backend/.env
+            NODE_ENV=local
             TYPEORM_CONNECTION=postgres
             TYPEORM_MIGRATIONS_DIR=./migrations
-            TYPEORM_ENTITIES=./modules/domain/**/*.entity.ts
-            TYPEORM_MIGRATIONS=./migrations/*.ts
+            TYPEORM_ENTITIES=./modules/domain/**/*.entity{.ts,.js}
+            TYPEORM_MIGRATIONS=./migrations/*{.ts,.js}
             TYPEORM_HOST=${TYPEORM_HOST}
             TYPEORM_PORT=${TYPEORM_PORT}
             TYPEORM_USERNAME=${TYPEORM_USERNAME}
@@ -360,10 +361,11 @@ jobs:
           name: prepare environment for backend build
           command: |
             cat \<<EOF > backend/.env
+            NODE_ENV=local
             TYPEORM_CONNECTION=postgres
             TYPEORM_MIGRATIONS_DIR=./migrations
-            TYPEORM_ENTITIES=./modules/domain/**/*.entity.ts
-            TYPEORM_MIGRATIONS=./migrations/*.ts
+            TYPEORM_ENTITIES=./modules/domain/**/*.entity{.ts,.js}
+            TYPEORM_MIGRATIONS=./migrations/*{.ts,.js}
             TYPEORM_HOST=${TYPEORM_HOST}
             TYPEORM_PORT=${TYPEORM_PORT}
             TYPEORM_USERNAME=${TYPEORM_USERNAME}
