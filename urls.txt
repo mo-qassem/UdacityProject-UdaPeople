@@ -1,6 +1,6 @@
 URL01
 *GitHub repository URL
-https://github.com/mo-qassem/UdacityProject-UdaPeople-BackendApp
+https://github.com/mo-qassem/UdacityProject-UdaPeople-Backend
 
 URL02
 *Public URL for your S3 Bucket
