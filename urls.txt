@@ -4,8 +4,8 @@ https://github.com/mo-qassem/UdacityProject-UdaPeople-Backend
 
 URL02
 *Public URL for your S3 Bucket
-http://udapeople-frontend-3149.s3-website-us-east-1.amazonaws.com
+http://udapeople-frontend-208f.s3-website-us-east-1.amazonaws.com
 
 URL03
 *Cloudfront URL
-https://d32uakdzvebrjn.cloudfront.net
+d3vaau43j194y1.cloudfront.net
