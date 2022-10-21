@@ -14,7 +14,7 @@ commands:
           name: What should you do!
           when: on_fail
           command: |
-            echo "--------${CIRCLE_JOB} '<< parameters.reason >>'--------"
+            echo "---------${CIRCLE_JOB} '<< parameters.reason >>'--------"
   destroy-infrastructure:
     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
     parameters:
