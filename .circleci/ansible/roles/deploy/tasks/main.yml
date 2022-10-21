@@ -30,23 +30,7 @@
 
 - name: "start the backend app-stage 2"
   become: true
-  command:
-    chdir: /home/ubuntu/udapeople-appfiles/dist
-    cmd: pm2 stop default
-    cmd: pm2 start main.js
-# - name: "start the backend app-stage 2"
-#   become: true
-#   command: pm2 start npm -- start
-#   args:
-#     chdir: /home/ubuntu/udapeople-appfiles/dist/
-# environment:
-#   ENVIRONMENT: "production"
-#   TYPEORM_MIGRATIONS_DIR: "./migrations"
-#   TYPEORM_ENTITIES: "./modules/domain/**/*.entity.js"
-#   TYPEORM_MIGRATIONS: "./migrations/*.js"
-#   TYPEORM_PORT: 5432
-#   TYPEORM_CONNECTION: "{{ lookup('env', 'TYPEORM_CONNECTION') }}"
-#   TYPEORM_DATABASE: "{{ lookup('env', 'TYPEORM_DATABASE') }}"
-#   TYPEORM_HOST: "{{ lookup('env', 'TYPEORM_HOST') }}"
-#   TYPEORM_USERNAME: "{{ lookup('env', 'TYPEORM_USERNAME') }}"
-#   TYPEORM_PASSWORD: "{{ lookup('env', 'TYPEORM_PASSWORD') }}"
+  shell: |
+    cd /home/ubuntu/udapeople-appfiles/dist
+    pm2 stop default
+    pm2 start main.js
