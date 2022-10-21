@@ -16,7 +16,7 @@
     dest: /home/ubuntu/udapeople-appfiles/
     remote_src: yes
 
-- name: "copy nodejs app to backend-server"
+- name: "copy dotenv file to backend-server"
   copy:
     src: /home/ubuntu/udapeople-appfiles/.env
     dest: /home/ubuntu/udapeople-appfiles/dist/.env
