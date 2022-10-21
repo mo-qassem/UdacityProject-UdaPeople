@@ -446,7 +446,7 @@ jobs:
             list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
             --no-paginate --output text)
             echo $OLD_WORKFLOW_ID > first-stage.txt
-            sed 's/udapeople-//g' first-stage.txt > OLD_WORKFLOW_ID.txt
+            sed 's/udapeople-frontend//g' first-stage.txt > OLD_WORKFLOW_ID.txt
             cat OLD_WORKFLOW_ID.txt
       - persist_to_workspace:
           root: ~/project
